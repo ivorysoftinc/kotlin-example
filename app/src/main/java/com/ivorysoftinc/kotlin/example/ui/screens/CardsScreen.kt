@@ -178,9 +178,9 @@ fun CardImageTitleDescriptionItem(modifier: Modifier = Modifier, card: Card.Imag
                     .aspectRatio(
                         // GlideImage height = GlideImage width * ratio of card image width to height
                         ratio = (card.image?.size?.width ?: 1).toFloat() / (
-                                card.image?.size?.height
-                                    ?: 1
-                                )
+                            card.image?.size?.height
+                                ?: 1
+                            )
                     ),
                 loading = {
                     CircularProgressIndicator(
