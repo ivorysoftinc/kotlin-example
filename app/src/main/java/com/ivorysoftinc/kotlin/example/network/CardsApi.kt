@@ -8,6 +8,6 @@ import retrofit2.http.GET
  */
 interface CardsApi {
 
-    @GET("test/home")
+    @GET("ivorysoftinc/kotlin-example/master/list_data.json")
     suspend fun getCards(): RootCardsResponse
 }

@@ -9,6 +9,7 @@ import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.ivorysoftinc.kotlin.example.resources.strings.NO_INTERNET_CONNECTION
 import com.ivorysoftinc.kotlin.example.resources.theme.KotlinExampleTheme
+import com.ivorysoftinc.kotlin.example.ui.main.MainViewModel
 import com.ivorysoftinc.kotlin.example.ui.screens.CardsScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -16,6 +17,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.androidx.compose.getStateViewModel
 
 /**
  * Instrumented tests.
@@ -31,7 +33,9 @@ class ComposeInstrumentedTests {
         // Start the app
         composeTestRule.setContent {
             KotlinExampleTheme {
-                CardsScreen()
+                val viewModel = getStateViewModel<MainViewModel>()
+
+                CardsScreen(viewModel)
             }
         }
     }

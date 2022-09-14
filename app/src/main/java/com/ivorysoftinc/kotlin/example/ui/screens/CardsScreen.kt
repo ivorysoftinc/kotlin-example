@@ -32,7 +32,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
@@ -43,17 +42,14 @@ import com.ivorysoftinc.kotlin.example.resources.strings.IMAGE_LOAD_FAILED
 import com.ivorysoftinc.kotlin.example.resources.strings.NO_INTERNET_CONNECTION
 import com.ivorysoftinc.kotlin.example.ui.main.MainViewModel
 import com.skydoves.landscapist.glide.GlideImage
-import org.koin.androidx.compose.getStateViewModel
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 /**
  * Composable screen for showing cards list.
  */
 
-@Preview(showBackground = true)
 @Composable
-fun CardsScreen() {
-    val viewModel = getStateViewModel<MainViewModel>()
+fun CardsScreen(viewModel: MainViewModel) {
     val internetConnectionState = viewModel.getInternetUpdatesFlow(context = LocalContext.current)
         .collectAsState(initial = true)
     val loadingState = viewModel.loadingFlow.collectAsState(initial = true)
@@ -182,9 +178,9 @@ fun CardImageTitleDescriptionItem(modifier: Modifier = Modifier, card: Card.Imag
                     .aspectRatio(
                         // GlideImage height = GlideImage width * ratio of card image width to height
                         ratio = (card.image?.size?.width ?: 1).toFloat() / (
-                            card.image?.size?.height
-                                ?: 1
-                            )
+                                card.image?.size?.height
+                                    ?: 1
+                                )
                     ),
                 loading = {
                     CircularProgressIndicator(

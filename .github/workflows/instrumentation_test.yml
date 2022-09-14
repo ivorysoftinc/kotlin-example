@@ -1,8 +1,6 @@
 name: Instrumentation Tests
 
-on:
-  pull_request:
-    branches: [ master, develop ]
+on: [ push ]
 
 jobs:
   test:
